@@ -7,6 +7,7 @@ import { KeyboardShortcuts } from '@/lib/KeyboardShortcuts';
 import { RecordingIndicator } from '@/lib/RecordingIndicator';
 import { SettingsMenu } from '@/lib/SettingsMenu';
 import { ConnectionDetails } from '@/lib/types';
+import { ScreenShareFullscreen } from '@/lib/ScreenShareFullscreen';
 import {
   formatChatMessageLinks,
   LocalUserChoices,
@@ -235,6 +236,7 @@ function VideoConferenceComponent(props: {
           chatMessageFormatter={formatChatMessageLinks}
           SettingsComponent={SHOW_SETTINGS_MENU ? SettingsMenu : undefined}
         />
+        <ScreenShareFullscreen />
         <DebugMode />
         <RecordingIndicator />
       </RoomContext.Provider>
