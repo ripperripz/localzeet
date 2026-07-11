@@ -19,6 +19,7 @@ import {
   RoomOptions,
   VideoCodec,
   VideoPresets,
+  ScreenSharePresets,
   Room,
   DeviceUnsupportedError,
   RoomConnectOptions,
@@ -123,6 +124,8 @@ function VideoConferenceComponent(props: {
       videoSimulcastLayers: props.options.hq
         ? [VideoPresets.h1080, VideoPresets.h720]
         : [VideoPresets.h540, VideoPresets.h216],
+      // Prefer high-quality screen share publishing; browser negotiates capture resolution
+      screenShareEncoding: ScreenSharePresets.h1080fps30.encoding,
       red: !e2eeEnabled,
       videoCodec,
     };
@@ -138,6 +141,7 @@ function VideoConferenceComponent(props: {
       singlePeerConnection: props.options.singlePeerConnection,
     };
   }, [props.userChoices, props.options.hq, props.options.codec]);
+
 
   const room = React.useMemo(() => new Room(roomOptions), []);
 
